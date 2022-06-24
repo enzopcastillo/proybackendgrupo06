@@ -46,12 +46,13 @@ empleadoCtl.loginUsuario = async (req, res)=>{
                 status: 0,
                 msg: "not found" })
         } else {
-        res.json({
-            status: 1,
-            msg: "success",
-            username: user.username, //retorno información útil para el frontend
-            perfil: user.perfil, //retorno información útil para el frontend
-            userid: user._id //retorno información útil para el frontend
+            res.json({
+                status: 1,
+                msg: "success",
+                username: user.username, //retorno información útil para el frontend
+                perfil: user.perfil, //retorno información útil para el frontend
+                userid: user._id //retorno información útil para el frontend
+            })
         }
     })
 };
