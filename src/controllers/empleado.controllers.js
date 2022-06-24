@@ -1,36 +1,33 @@
 const Empleado = require('../models/empleado');
 const empleadoCtl = {};
 
-empleadoCtl.getEmpleados = async (req, res)=>{
-    const empleados = await Empleado.find();
-    res.json(empleados);
-};
-
 empleadoCtl.createEmpleado = async (req, res)=>{
     const newEmpleado = new Empleado(req.body);
     await newEmpleado.save();
     res.send({message: 'Empleado creado exitosamente.'});
 };
 
-/*
+empleadoCtl.getEmpleados = async (req, res)=>{
+    const empleados = await Empleado.find();
+    res.json(empleados);
+};
+
 empleadoCtl.getEmpleado = async (req, res)=>{
-    const libro = await Libro.findById(req.params.id);
-    res.send(libro);
+    const empleado = await Empleado.findById(req.params.id);
+    res.send(empleado);
 };
 
 empleadoCtl.updateEmpleado = async (req, res)=>{
-    await Pasaje.findByIdAndUpdate(req.params.id, req.body);
-    res.json({status: 'Employee updated.'});
+    await Empleado.findByIdAndUpdate(req.params.id, req.body);
+    res.json({status: 'Empleado updated.'});
 };
 
 empleadoCtl.deleteEmpleado = async (req, res)=>{
-    await Pasaje.findByIdAndDelete(req.params.id);
-    res.json({status: 'Employee deleted.'});
+    await Empleado.findByIdAndDelete(req.params.id);
+    res.json({status: 'Empleado deleted.'});
 };
-*/
 
-
-empleadoCtl.loginUsuario = async (req, res)=>{
+empleadoCtl.loginEmpleado = async (req, res)=>{
     const criteria = {
         username: req.body.username,
         password: req.body.password
@@ -44,14 +41,14 @@ empleadoCtl.loginUsuario = async (req, res)=>{
         if (!user) {
             res.json({
                 status: 0,
-                msg: "not found" })
+                msg: "Empleado not found." })
         } else {
             res.json({
                 status: 1,
-                msg: "success",
-                username: user.username, //retorno información útil para el frontend
-                perfil: user.perfil, //retorno información útil para el frontend
-                userid: user._id //retorno información útil para el frontend
+                msg: "You are successfully logged in.",
+                username: user.username,
+                perfil: user.perfil,
+                userid: user._id
             })
         }
     })
