@@ -4,7 +4,7 @@ const empleadoCtl = {};
 empleadoCtl.createEmpleado = async (req, res)=>{
     const newEmpleado = new Empleado(req.body);
     await newEmpleado.save();
-    res.send({message: 'Empleado creado exitosamente.'});
+    res.send({message: 'Empleado created.'});
 };
 
 empleadoCtl.getEmpleados = async (req, res)=>{
