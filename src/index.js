@@ -9,7 +9,7 @@ app.use(express.json());
 app.use('/api/empleados', require('./routes/empleado.routes'));
 app.use('/api/dependencias', require('./routes/dependencia.routes'));
 app.use('/api/tipoReunion', require('./routes/tipoReunion.routes'));
-//app.use('/api/recurso', require('./routes/recurso.routes'));
+app.use('/api/recurso', require('./routes/recurso.routes'));
 app.use('/api/notificacion', require('./routes/notificacion.routes'));
 
 app.set('port', process.env.PORT || 4000);
