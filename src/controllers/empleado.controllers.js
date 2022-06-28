@@ -8,12 +8,12 @@ empleadoCtl.createEmpleado = async (req, res)=>{
 };
 
 empleadoCtl.getEmpleados = async (req, res)=>{
-    const empleados = await Empleado.find().populate('dependencia');
+    const empleados = await Empleado.find().populate('dependencia').populate('notificaciones');
     res.json(empleados);
 };
 
 empleadoCtl.getEmpleado = async (req, res)=>{
-    const empleado = await Empleado.findById(req.params.id);
+    const empleado = await Empleado.findById(req.params.id).populate('dependencia').populate('notificaciones');
     res.send(empleado);
 };
 

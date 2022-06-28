@@ -1,6 +1,4 @@
-const mongoose = require('mongoose');
-const {Schema} = mongoose;
-//const {Schema, model} = require('mongoose');
+const {Schema, model} = require('mongoose');
 const TipoReunion = require('./tipoReunion');
 const Oficina = require('./oficina');
 const Empleado = require('./empleado');
@@ -19,5 +17,4 @@ const reunionSchema = new Schema({
     codigoQr: {type: String, required: true},
 })
 
-//module.exports = model('Reunion', reunionSchema);
-module.exports = mongoose.models.Reunion || mongoose.model('Reunion', reunionSchema);
+module.exports = model('Reunion', reunionSchema);

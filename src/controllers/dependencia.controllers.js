@@ -27,5 +27,4 @@ dependenciaCtl.deleteDependencia = async (req, res)=>{
     res.json({status: 'Dependencia deleted.'});
 };
 
-
 module.exports = dependenciaCtl;

@@ -1,11 +1,11 @@
 const {Router} = require('express');
 const router = Router();
-const tipoReunion = require('../controllers/tipoReunion.controllers');
+const tipoReunionCtl = require('../controllers/tipoReunion.controllers');
 
-router.post('/', tipoReunion.createTipoReunion);
-router.get('/', tipoReunion.getTipoReuniones);
-router.get('/:id', tipoReunion.getTipoReunion);
-router.put('/:id', tipoReunion.updateTipoReunion);
-router.delete('/:id', tipoReunion.deleteTipoReunion);
+router.post('/', tipoReunionCtl.createTipoReunion);
+router.get('/', tipoReunionCtl.getTipoReuniones);
+router.get('/:id', tipoReunionCtl.getTipoReunion);
+router.put('/:id', tipoReunionCtl.updateTipoReunion);
+router.delete('/:id', tipoReunionCtl.deleteTipoReunion);
 
 module.exports = router;
