@@ -12,6 +12,14 @@ reunionCtl.getReuniones = async (req, res)=>{
     res.json(reuniones);
 };
 
+reunionCtl.getReunionesOficina = async (req, res)=>{
+    criteria = {};
+    if(req.query.oficina!=null && req.query.oficina!=""){
+        criteria.oficina = { $regex: req.query.oficina, $options: "i" }};    
+    const reuniones = await Reunion.find(criteria).populate('tipoReunion').populate('oficina');
+    res.json(reuniones);
+};
+
 reunionCtl.getReunion = async (req, res)=>{
     const reunion = await Reunion.findById(req.params.id).populate('tipoReunion').populate('oficina');
     res.send(reunion);

@@ -2,6 +2,8 @@ const {Schema, model} = require('mongoose');
 const Reuniones = require('./reunion');
 
 const oficinaSchema = new Schema({
+    nombre: {type: String, required: true},
+    numero: {type: Number, required: true},
     reuniones: [{type: Schema.Types.ObjectId, ref: Reuniones}],
     numero: {type: Number, required: true},
     horarioApertura: {type: String, required: true},
