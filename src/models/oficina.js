@@ -5,7 +5,7 @@ const oficinaSchema = new Schema({
     nombre: {type: String, required: true},
     numero: {type: Number, required: true},
     reuniones: [{type: Schema.Types.ObjectId, ref: Reuniones}],
-    numero: {type: Number, required: true},
+    //numero: {type: Number, required: true},
     horarioApertura: {type: String, required: true},
     horarioCierre: {type: String, required: true},
     diasFuncionamiento: {type: String, required: true},

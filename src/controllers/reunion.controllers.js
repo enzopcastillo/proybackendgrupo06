@@ -23,7 +23,7 @@ reunionCtl.getReunionesOficina = async (req, res)=>{
     
     
     /* Reemplazar el _id con el id de la reunion a buscar */
-    const reuniones = await Reunion.find({oficina:{_id:"62bb40ddfde8bd3ec266c924"}}).populate('tipoReunion').populate('oficina');
+    const reuniones = await Reunion.find({oficina:{_id: req.params.id}}).populate('tipoReunion').populate('oficina');
     res.json(reuniones);
 };
 

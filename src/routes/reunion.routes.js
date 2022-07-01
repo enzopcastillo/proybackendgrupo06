@@ -4,7 +4,7 @@ const reunionCtl = require('../controllers/reunion.controllers');
 
 router.post('/', reunionCtl.createReunion);
 router.get('/', reunionCtl.getReuniones);
-router.get('/oficina', reunionCtl.getReunionesOficina);
+router.get('/:id', reunionCtl.getReunionesOficina);
 router.get('/:id', reunionCtl.getReunion);
 router.put('/:id', reunionCtl.updateReunion);
 router.delete('/:id', reunionCtl.deleteReunion);

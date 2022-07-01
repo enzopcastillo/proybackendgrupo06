@@ -13,7 +13,7 @@ const empleadoSchema = new Schema({
     password: {type: String, required: true},
     rol: {type: String, required: true},
     reuniones: [{type: Schema.Types.ObjectId, ref: Reunion, required: true}],
-    cantidadReuniones: {type: Number, required: true},
+    cantidadReuniones: {type: Number, required: true}, 
     notificaciones: [{type: Schema.Types.ObjectId, ref: Notificacion, required: true}],
     estadoEmpleado: {type: Boolean, required: true},
 })
