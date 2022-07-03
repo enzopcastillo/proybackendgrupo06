@@ -1,5 +1,6 @@
 const Empleado = require('../models/empleado');
 const empleadoCtl = {};
+const jwt = require('jsonwebtoken');
 
 empleadoCtl.createEmpleado = async (req, res)=>{
     const newEmpleado = new Empleado(req.body);
@@ -43,12 +44,14 @@ empleadoCtl.loginEmpleado = async (req, res)=>{
                 status: 0,
                 msg: "Empleado not found." })
         } else {
+            const unToken = jwt.sign({id: user._id}, "secretkey")
             res.json({
                 status: 1,
                 msg: "You are successfully logged in.",
                 username: user.username,
                 perfil: user.perfil,
-                userid: user._id
+                userid: user._id,
+                token: unToken
             })
         }
     })
