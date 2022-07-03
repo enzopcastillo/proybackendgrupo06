@@ -13,17 +13,12 @@ reunionCtl.getReuniones = async (req, res)=>{
 };
 
 reunionCtl.getReunionesOficina = async (req, res)=>{
-    /*criteria = {};
-    if(req.query.oficina!=null && req.query.oficina!=""){
-        criteria.oficina = { $regex: req.query.oficina, $options: "i" }};    
-    const reuniones = await Reunion.find(criteria).populate('tipoReunion').populate('oficina');
+    const reuniones = await Reunion.find({oficina:{_id: req.params.id}}).populate('tipoReunion').populate('oficina');
     res.json(reuniones);
-    */
-    /*const reuniones = await Reunion.find({"oficina.nombre": "nombre1"}).populate('tipoReunion').populate('oficina');*/
-    
-    
-    /* Reemplazar el _id con el id de la reunion a buscar */
-    const reuniones = await Reunion.find({oficina:{_id:"62bb40ddfde8bd3ec266c924"}}).populate('tipoReunion').populate('oficina');
+};
+
+reunionCtl.getReunionesEmpleado = async (req, res)=>{
+    const reuniones = await Reunion.find({empleados:{_id: req.params.id}}).populate('tipoReunion').populate('oficina');
     res.json(reuniones);
 };
 
