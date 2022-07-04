@@ -51,6 +51,7 @@ empleadoCtl.loginEmpleado = async (req, res)=>{
                 username: user.username,
                 perfil: user.perfil,
                 userid: user._id,
+                rol: user.rol,
                 token: unToken
             })
         }
