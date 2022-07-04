@@ -47,7 +47,7 @@ empleadoCtl.loginEmpleado = async (req, res)=>{
                 status: 1,
                 msg: "You are successfully logged in.",
                 username: user.username,
-                perfil: user.perfil,
+                rol: user.rol,
                 userid: user._id
             })
         }

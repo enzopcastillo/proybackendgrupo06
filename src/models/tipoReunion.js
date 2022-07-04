@@ -5,4 +5,4 @@ const tipoReunionSchema = new Schema({
     descripcion: {type: String, required: true}
 })
 
-module.exports = model('TipoReunion', tipoReunionSchema);
+module.exports = model('TipoReunion', tipoReunionSchema); 
