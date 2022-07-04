@@ -1,12 +1,13 @@
 const {Router} = require('express');
 const router = Router();
 const empleadoCtl = require('../controllers/empleado.controllers');
+const authCtl = require('../controllers/auth.controllers');
 
-router.post('/', empleadoCtl.createEmpleado);
+router.post('/', authCtl.verifyToken, empleadoCtl.createEmpleado);
 router.post('/login', empleadoCtl.loginEmpleado);
-router.get('/', empleadoCtl.getEmpleados);
-router.get('/:id', empleadoCtl.getEmpleado);
-router.put('/:id', empleadoCtl.updateEmpleado);
-router.delete('/:id', empleadoCtl.deleteEmpleado);
+router.get('/', authCtl.verifyToken, empleadoCtl.getEmpleados);
+router.get('/:id', authCtl.verifyToken, empleadoCtl.getEmpleado);
+router.put('/:id', authCtl.verifyToken, empleadoCtl.updateEmpleado);
+router.delete('/:id', authCtl.verifyToken, empleadoCtl.deleteEmpleado);
 
 module.exports = router;
