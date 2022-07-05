@@ -14,13 +14,13 @@ reunionCtl.getReuniones = async (req, res)=>{
     res.json(reuniones);
 };
 
-reunionCtl.getReunionesOficina = async (req, res)=>{
+reunionCtl.getReunionesOficinas = async (req, res)=>{
     const reuniones = await Reunion.find({oficina:{_id: req.params.id}}).populate('tipoReunion').populate('oficina');
     res.json(reuniones);
 };
 
-reunionCtl.getReunionesEmpleado = async (req, res)=>{
-    const reuniones = await Reunion.find({empleados:{_id: req.params.id}}).populate('tipoReunion').populate('oficina');
+reunionCtl.getReunionesParticipantes = async (req, res)=>{
+    const reuniones = await Reunion.find({participantes:{_id: req.params.id}}).populate('tipoReunion').populate('oficina');
     res.json(reuniones);
 };
 
