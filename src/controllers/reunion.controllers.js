@@ -1,3 +1,5 @@
+const empleado = require('../models/empleado');
+const recurso = require('../models/recurso');
 const Reunion = require('../models/reunion');
 const reunionCtl = {};
 
@@ -23,8 +25,19 @@ reunionCtl.getReunionesEmpleado = async (req, res)=>{
 };
 
 reunionCtl.getReunion = async (req, res)=>{
-    const reunion = await Reunion.findById(req.params.id).populate('tipoReunion').populate('oficina');
-    res.send(reunion);
+    const reunion = await Reunion.findById(req.params.id).populate('tipoReunion').populate('oficina').populate([{
+        path:'participantes',
+        model:empleado,
+        populate:{
+            path:'dependencia'
+        }
+    },
+{
+    path:'recursos',
+    model: recurso
+}]);
+     res.send(reunion);
+    
 };
 
 reunionCtl.updateReunion = async (req, res)=>{
