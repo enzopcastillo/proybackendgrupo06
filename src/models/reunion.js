@@ -11,14 +11,14 @@ const reunionSchema = new Schema({
     fecha: {type: String, required: true},
     horaReunion: {type: String, required: true},
     horaFinalizacion: {type: String, required: true},
-    tipoReunion: {type: Schema.Types.ObjectId, ref: TipoReunion, required: true},
+    tipoReunion: {type: Schema.Types.ObjectId, ref: TipoReunion},
     estadoReunion: {type: String, required: true},
-    oficina: {type: Schema.Types.ObjectId, ref: Oficina, required: true},
-    participantes: [{type: Schema.Types.ObjectId, ref: Empleado, required: true}],
-    recursos: [{type: Schema.Types.ObjectId, ref: Recurso, required: true}],
+    oficina: {type: Schema.Types.ObjectId, ref: Oficina},
+    participantes: [{type: Schema.Types.ObjectId, ref: Empleado}],
+    recursos: [{type: Schema.Types.ObjectId, ref: Recurso}],
     prioridad: {type: Number, required: true},
     codigoQr: {type: String, required: false},
-    notificacion: [{type: Schema.Types.ObjectId, ref: Notificacion, required: true}]
+    notificacion: [{type: Schema.Types.ObjectId, ref: Notificacion}]
 })
 
 module.exports = model('Reunion', reunionSchema);

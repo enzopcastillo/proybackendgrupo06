@@ -16,7 +16,7 @@ app.use('/api/oficina', require('./routes/oficina.routes'));
 app.use('/api/recurso', require('./routes/recurso.routes'));
 app.use('/api/reunion', require('./routes/reunion.routes'));
 app.use('/api/tipoReunion', require('./routes/tipoReunion.routes'));
-app.use( require('./routes/correo.routes'));
+app.use(require('./routes/correo.routes'));
 
 app.set('port', process.env.PORT || 4000);
 app.listen(app.get('port'), ()=>{
