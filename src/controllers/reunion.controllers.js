@@ -37,7 +37,7 @@ reunionCtl.getReunion = async (req, res)=>{
     path:'recursos',
     model: recurso
 }]);
-     res.send(reunion);
+    res.send(reunion);
     
 };
 

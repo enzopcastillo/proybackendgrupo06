@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const url_database = 'mongodb://localhost/final_database';
+const url_database = 'mongodb://localhost/tpfinal_database';
 
 mongoose.connect(url_database, {
     useUnifiedTopology: true,
