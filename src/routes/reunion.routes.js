@@ -1,6 +1,7 @@
 const {Router} = require('express');
 const router = Router();
 const reunionCtl = require('../controllers/reunion.controllers');
+const authCtl = require('../controllers/auth.controllers');
 
 router.post('/', reunionCtl.createReunion);
 router.get('/', reunionCtl.getReuniones);
