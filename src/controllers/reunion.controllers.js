@@ -27,13 +27,37 @@ reunionCtl.getReuniones = async (req, res)=>{
 };
 
 reunionCtl.getReunionesPorOficinas = async (req, res)=>{
-    const reuniones = await Reunion.find({oficina:{_id: req.params.id}}).populate('tipoReunion').populate('oficina');
+    const reuniones = await Reunion.find({oficina:{_id: req.params.id}}).populate('tipoReunion').populate('oficina').populate([
+        {
+            path:'participantes',
+            model:empleado,
+            populate:{
+                path:'dependencia'
+            }
+        },
+        {
+            path:'recursos',
+            model: recurso
+        }
+    ]); ;
     res.json(reuniones);
 };
 
 reunionCtl.getReunionesPorParticipantes = async (req, res)=>{
     const busqueda= empleado._id;
-    const reuniones = await Reunion.find({participantes:{ _id: req.params.id}}).populate('tipoReunion').populate('oficina');
+    const reuniones = await Reunion.find({participantes:{ _id: req.params.id}}).populate('tipoReunion').populate('oficina').populate([
+        {
+            path:'participantes',
+            model:empleado,
+            populate:{
+                path:'dependencia'
+            }
+        },
+        {
+            path:'recursos',
+            model: recurso
+        }
+    ]); 
     res.json(reuniones);
 };
 
