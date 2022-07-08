@@ -17,7 +17,7 @@ const reunionSchema = new Schema({
     participantes: [{type: Schema.Types.ObjectId, ref: Empleado, required: true}],
     recursos: [{type: Schema.Types.ObjectId, ref: Recurso, required: true}],
     prioridad: {type: Number, required: true},
-    codigoQr: {type: String, required: true},
+    codigoQr: {type: String},
     notificacion: [{type: Schema.Types.ObjectId, ref: Notificacion, required: true}],
 })
 
