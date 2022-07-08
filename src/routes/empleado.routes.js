@@ -3,7 +3,6 @@ const router = Router();
 const empleadoCtl = require('../controllers/empleado.controllers');
 const authCtl = require('../controllers/auth.controllers');
 
-//router.post('/', authCtl.verifyToken, empleadoCtl.createEmpleado); 
 router.post('/', empleadoCtl.createEmpleado); 
 router.post('/login', empleadoCtl.loginEmpleado);
 router.get('/', authCtl.verifyToken, empleadoCtl.getEmpleados);
