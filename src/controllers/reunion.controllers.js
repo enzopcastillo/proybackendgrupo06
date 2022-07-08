@@ -1,3 +1,5 @@
+const empleado = require('../models/empleado');
+const recurso = require('../models/recurso');
 const Reunion = require('../models/reunion');
 const reunionCtl = {};
 
@@ -18,43 +20,20 @@ reunionCtl.getReuniones = async (req, res)=>{
         },
         {
             path:'recursos',
-            model:'Recurso'
-        }
-    ]); 
-    res.json(reuniones); 
-};
-
-reunionCtl.getReunionesOficina = async (req, res)=>{
-    
-    const reuniones = await Reunion.find({oficina:{_id: req.params.id}}).populate('tipoReunion').populate('oficina').populate([
-        {
-            path:'participantes',
-            model:'Empleado',
-            populate:{
-                path:'dependencia'
-            }
-        },
-        {
-            path:'recursos', 
             model: 'Recurso'
         }
     ]); 
     res.json(reuniones);
 };
-reunionCtl.getReunionesEmpleado = async (req, res)=>{
-    const reuniones = await Reunion.find({empleados:{_id: req.params.id}}).populate('tipoReunion').populate('oficina').populate([
-        {
-            path:'participantes',
-            model:'Empleado',
-            populate:{
-                path:'dependencia'
-            }
-        },
-        {
-            path:'recursos',
-            model: 'Recurso'
-        }
-    ]); 
+
+reunionCtl.getReunionesPorOficinas = async (req, res)=>{
+    const reuniones = await Reunion.find({oficina:{_id: req.params.id}}).populate('tipoReunion').populate('oficina');
+    res.json(reuniones);
+};
+
+reunionCtl.getReunionesPorParticipantes = async (req, res)=>{
+    const busqueda= empleado._id;
+    const reuniones = await Reunion.find({participantes:{ _id: req.params.id}}).populate('tipoReunion').populate('oficina');
     res.json(reuniones);
 };
 
@@ -71,8 +50,9 @@ reunionCtl.getReunion = async (req, res)=>{
             path:'recursos',
             model: 'Recurso'
         }
-    ]); 
+    ]);
     res.send(reunion);
+    
 };
 
 reunionCtl.updateReunion = async (req, res)=>{

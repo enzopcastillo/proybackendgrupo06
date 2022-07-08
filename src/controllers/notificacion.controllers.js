@@ -20,6 +20,7 @@ notificacionCtl.getNotificacion = async (req, res)=>{
 notificacionCtl.updateNotificacion = async (req, res)=>{
     await Notificacion.findByIdAndUpdate(req.params.id, req.body);
     res.json({status: 'Notificacion updated.'});
+    res.json({result: 'creasdo'})
 };
 
 notificacionCtl.deleteNotificacion = async (req, res)=>{
